@@ -1,0 +1,19 @@
+oms:
+  greetings: Hello From OMS
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+
+kafka:
+  bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+  order-created-topic: order-created
+  order-processed-topic: order-processed
+# spring:
+#   kafka:
+#     consumer:
+#       value-deserializer: org.apache.kafka.common.serialization.JsonDeserializer
+#       properties:
+#         spring.json.trusted.packages: "*"

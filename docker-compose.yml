@@ -1,0 +1,33 @@
+
+
+services:
+  kafka:
+    container_name: kafka
+    image: apache/kafka:3.7.1
+    ports:
+      - 9092:9092
+
+  config-server:
+    image: oms-config-server:2607
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+    # ports:
+    #   - "8888:8888"
+    environment:
+      - CONF_DIR=/config
+      # - JAVA_OPTS=-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Dspring.profiles.active=native -Dspring.cloud.config.server.native.searchLocations=file:/config
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    volumes:
+      - /home/meftaul/Documents/bs23/OrderManagementSystem/config-dir:/config
+  
+  order-service:
+    image: oms-order-service:2607
+    ports:
+      - "8081:8081"
+    depends_on:
+      - config-server
+    environment:
+      - CONFIG_URL=configserver:http://config-server:8888
+    restart: always
