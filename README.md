@@ -124,8 +124,8 @@ Here:
 
 Order Status Criteria:  
 if Order Quantity <= Inventory Quantity: Order Status = "PREOCESSED"  
-if Order Quantity > Inventory Quantity: Order Status = "OUT_OF_STOCK"
-if Product Id not found in Inventory: Order Status = "FAILED"
+if Order Quantity > Inventory Quantity: Order Status = "OUT_OF_STOCK"  
+if Product Id not found in Inventory: Order Status = "FAILED"  
 if Order service is unable to publish the Order to Kafka: Order Status = "FAILED"
 
 You can check the output with the following commands:
