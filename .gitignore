@@ -37,3 +37,4 @@ out/
 .vscode/
 
 oms-kafka/kafka*
+logs/
